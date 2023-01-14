@@ -63,7 +63,6 @@ object AppAuth {
                         val tokens = TokensModel(
                             accessToken = response.accessToken.orEmpty(),
                             refreshToken = response.refreshToken.orEmpty(),
-                            idToken = response.idToken.orEmpty()
                         )
                         continuation.resumeWith(Result.success(tokens))
                     }
@@ -84,7 +83,6 @@ object AppAuth {
         const val TOKEN_URI = "https://unsplash.com/oauth/token"
         const val RESPONSE_TYPE = ResponseTypeValues.CODE
         const val SCOPE = "public read_user write_user read_photos write_photos write_likes write_followers read_collections write_collections"
-
         const val CLIENT_ID = "QFkCTW-LYUZHpkJud6ursjKh_ljyq3U8MofB-fmURL8"
         const val CLIENT_SECRET = "CHThMVUyCJw252RnjKLvgpgUg-pnjrwIv_WffWXzGdI"
         const val CALLBACK_URL = "com.photohub.oauth://photohub.com/callback"

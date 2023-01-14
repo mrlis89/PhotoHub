@@ -14,7 +14,6 @@ class AuthRepository {
     fun logout() {
         TokenStorage.accessToken = null
         TokenStorage.refreshToken = null
-        TokenStorage.idToken = null
     }
 
     fun getAuthRequest(): AuthorizationRequest {
@@ -33,6 +32,5 @@ class AuthRepository {
         //обмен кода на токен произошел успешно, сохраняем токены и завершаем авторизацию
         TokenStorage.accessToken = tokens.accessToken
         TokenStorage.refreshToken = tokens.refreshToken
-        TokenStorage.idToken = tokens.idToken
     }
 }

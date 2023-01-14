@@ -1,4 +1,4 @@
-package com.arnava.photohub.ui.auth_screen
+package com.arnava.photohub.presentation.ui.auth_screen
 
 import android.os.Bundle
 import android.view.LayoutInflater

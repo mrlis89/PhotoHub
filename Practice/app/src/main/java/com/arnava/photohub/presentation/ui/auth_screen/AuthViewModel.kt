@@ -1,4 +1,4 @@
-package com.arnava.photohub.ui.auth_screen
+package com.arnava.photohub.presentation.ui.auth_screen
 
 import android.content.Context
 import android.content.Intent

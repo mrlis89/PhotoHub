@@ -1,4 +1,4 @@
-package com.arnava.photohub.ui.notifications_screen
+package com.arnava.photohub.presentation.ui.notifications_screen
 
 import android.os.Bundle
 import android.view.LayoutInflater
