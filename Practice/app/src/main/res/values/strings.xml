@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">photoHub</string>
+    <string name="title_home">Home</string>
+    <string name="title_favourites">Favourites</string>
+    <string name="title_profile_settings">Profile</string>
+    <string name="auth_canceled">Аутентификация не выполнена</string>
+    <string name="title_authorization">Please log in</string>
+</resources>
