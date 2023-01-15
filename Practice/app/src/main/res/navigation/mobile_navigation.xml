@@ -7,28 +7,24 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.arnava.photohub.presentation.ui.home_screen.HomeFragment"
+        android:name="com.arnava.photohub.ui.view.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_favourites"
-        android:name="com.arnava.photohub.presentation.ui.favourites_screen.FavouritesFragment"
+        android:name="com.arnava.photohub.ui.view.FavouritesFragment"
         android:label="@string/title_favourites"
         tools:layout="@layout/fragment_favourites" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.arnava.photohub.presentation.ui.notifications_screen.ProfileFragment"
+        android:name="com.arnava.photohub.ui.view.ProfileFragment"
         android:label="@string/title_profile_settings"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/navigation_auth"
-        android:name="com.arnava.photohub.presentation.ui.auth_screen.AuthFragment"
+        android:name="com.arnava.photohub.ui.view.AuthFragment"
         android:label="@string/title_authorization"
-        tools:layout="@layout/fragment_auth">
-        <action
-            android:id="@+id/action_authFragment_to_navigation_home"
-            app:destination="@id/navigation_home" />
-    </fragment>
+        tools:layout="@layout/fragment_auth"/>
 </navigation>
