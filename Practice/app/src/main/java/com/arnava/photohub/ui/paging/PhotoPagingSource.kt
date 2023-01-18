@@ -3,7 +3,7 @@ package com.arnava.photohub.ui.paging
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.arnava.photohub.data.repository.UnsplashNetworkRepository
-import com.arnava.photohub.data.models.dto.Photo
+import com.arnava.photohub.data.models.unsplash.Photo
 import javax.inject.Inject
 
 class PhotoPagingSource @Inject constructor(private val repository: UnsplashNetworkRepository) :

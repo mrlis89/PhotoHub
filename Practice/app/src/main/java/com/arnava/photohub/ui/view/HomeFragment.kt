@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.arnava.photohub.data.models.dto.Photo
+import com.arnava.photohub.data.models.unsplash.Photo
 import com.arnava.photohub.databinding.FragmentHomeBinding
 import com.arnava.photohub.ui.paging.PagedPhotoListAdapter
 import com.arnava.photohub.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -19,7 +20,10 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val homeViewModel: HomeViewModel by viewModels()
-    private val pagedPhotoListAdapter = PagedPhotoListAdapter {onItemClick(it)}
+    private val pagedPhotoListAdapter = PagedPhotoListAdapter(
+        { onPhotoClick(it) },
+        { onLikeClick(it) }
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,7 +45,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun onItemClick(item: Photo) {
+    private fun onPhotoClick(item: Photo) {
 //        val bundle = Bundle().apply {
 //            putParcelable("param1", item)
 //        }
@@ -50,6 +54,13 @@ class HomeFragment : Fragment() {
 //            replace(R.id.fragmentContainerView, CharacterDetailsFragment::class.java, bundle)
 //            addToBackStack(MainFragment::class.java.name)
 //        }
+    }
+
+    private fun onLikeClick(item: Photo) {
+        runBlocking {
+            if (!item.likedByUser) homeViewModel.likePhoto(item.id)
+            else homeViewModel.unlikePhoto(item.id)
+        }
     }
 
 }

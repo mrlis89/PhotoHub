@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_favourites"
-        android:name="com.arnava.photohub.ui.view.FavouritesFragment"
+        android:name="com.arnava.photohub.ui.view.CollectionsFragment"
         android:label="@string/title_favourites"
         tools:layout="@layout/fragment_favourites" />
 

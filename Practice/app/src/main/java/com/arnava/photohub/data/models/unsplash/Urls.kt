@@ -1,4 +1,4 @@
-package com.arnava.photohub.data.models.dto
+package com.arnava.photohub.data.models.unsplash
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

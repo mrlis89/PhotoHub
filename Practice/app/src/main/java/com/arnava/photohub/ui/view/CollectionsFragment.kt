@@ -7,15 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.arnava.photohub.databinding.FragmentFavouritesBinding
-import com.arnava.photohub.viewmodel.FavouritesViewModel
+import com.arnava.photohub.viewmodel.CollectionsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FavouritesFragment : Fragment() {
+class CollectionsFragment : Fragment() {
 
     private var _binding: FragmentFavouritesBinding? = null
     private val binding get() = _binding!!
-    private val favouritesViewModel: FavouritesViewModel by viewModels()
+    private val collectionsViewModel: CollectionsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -1,4 +1,4 @@
-package com.arnava.photohub.data.models.dto
+package com.arnava.photohub.data.models.unsplash
 import com.squareup.moshi.JsonClass
 
 import com.squareup.moshi.Json
@@ -22,7 +22,7 @@ data class Photo(
     @Json(name = "likes")
     val likes: Int,
     @Json(name = "liked_by_user")
-    val likedByUser: Boolean,
+    var likedByUser: Boolean,
     @Json(name = "description")
     val description: String?,
     @Json(name = "user")

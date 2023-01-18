@@ -8,7 +8,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.Request
 import okhttp3.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -38,7 +37,7 @@ object RetrofitModule {
 
     @Provides
     @Singleton
-    fun providesWeatherByCityApi(retrofit: Retrofit): UnsplashApi =
+    fun providesUnsplashApi(retrofit: Retrofit): UnsplashApi =
         retrofit.create(UnsplashApi::class.java)
 
 }

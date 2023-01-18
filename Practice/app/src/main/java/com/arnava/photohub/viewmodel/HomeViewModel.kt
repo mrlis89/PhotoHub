@@ -7,7 +7,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.arnava.photohub.data.repository.UnsplashNetworkRepository
-import com.arnava.photohub.data.models.dto.Photo
+import com.arnava.photohub.data.models.unsplash.Photo
 import com.arnava.photohub.ui.paging.PhotoPagingSource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
@@ -21,4 +21,13 @@ class HomeViewModel @Inject constructor(private val repository: UnsplashNetworkR
         PagingConfig(PAGE_SIZE),
         null,
     ) { PhotoPagingSource(repository) }.flow.cachedIn(viewModelScope)
+
+    suspend fun likePhoto(id: String) {
+        repository.likePhoto(id)
+    }
+
+    suspend fun unlikePhoto(id: String) {
+        repository.unlikePhoto(id)
+    }
+
 }
