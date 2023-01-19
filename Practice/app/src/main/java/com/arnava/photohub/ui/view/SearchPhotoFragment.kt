@@ -1,32 +1,42 @@
 package com.arnava.photohub.ui.view
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.arnava.photohub.data.models.unsplash.photo.UnsplashPhoto
 import com.arnava.photohub.databinding.FragmentHomeBinding
 import com.arnava.photohub.ui.paging.PagedPhotoListAdapter
-import com.arnava.photohub.viewmodel.HomeViewModel
+import com.arnava.photohub.viewmodel.SearchPhotosViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
-@AndroidEntryPoint
-class HomeFragment : Fragment() {
+private const val ARG_PARAM1 = "param1"
 
+@AndroidEntryPoint
+class SearchPhotoFragment : Fragment() {
+    private var param1: String? = null
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val homeViewModel: HomeViewModel by viewModels()
+    private val searchPhotosViewModel: SearchPhotosViewModel by viewModels()
     private val pagedPhotoListAdapter = PagedPhotoListAdapter(
         { onPhotoClick(it) },
         { onLikeClick(it) }
     )
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            param1 = it.getString(ARG_PARAM1)
+        }
+        param1?.let {
+            searchPhotosViewModel.loadFoundPhotos(it)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,7 +52,7 @@ class HomeFragment : Fragment() {
         binding.recyclerView.adapter = pagedPhotoListAdapter
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            homeViewModel.pagingPhotos.collect {
+            searchPhotosViewModel.pagingPhotos.collect {
                 pagedPhotoListAdapter.submitData(it)
             }
         }
@@ -61,8 +71,8 @@ class HomeFragment : Fragment() {
 
     private fun onLikeClick(item: UnsplashPhoto) {
         runBlocking {
-            if (!item.likedByUser) homeViewModel.likePhoto(item.id)
-            else homeViewModel.unlikePhoto(item.id)
+            if (!item.likedByUser) searchPhotosViewModel.likePhoto(item.id)
+            else searchPhotosViewModel.unlikePhoto(item.id)
         }
     }
 

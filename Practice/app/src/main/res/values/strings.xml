@@ -6,4 +6,6 @@
     <string name="auth_canceled">Authentication failed</string>
     <string name="title_authorization">Please log in</string>
     <string name="likes">Likes: </string>
+    <string name="search">Search</string>
+    <string name="search_hint">Enter text to search</string>
 </resources>

@@ -1,5 +1,6 @@
-package com.arnava.photohub.data.models.unsplash
+package com.arnava.photohub.data.models.unsplash.user
 
+import com.arnava.photohub.data.models.unsplash.photo.Links
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -7,6 +8,8 @@ import com.squareup.moshi.JsonClass
 data class User(
     @Json(name = "id")
     val id: String,
+    @Json(name = "updated_at")
+    val updatedAt: String?,
     @Json(name = "username")
     val username: String,
     @Json(name = "name")

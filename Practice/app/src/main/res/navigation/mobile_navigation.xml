@@ -27,4 +27,9 @@
         android:name="com.arnava.photohub.ui.view.AuthFragment"
         android:label="@string/title_authorization"
         tools:layout="@layout/fragment_auth"/>
+    <fragment
+        android:id="@+id/navigation_search_photo_fragment"
+        android:name="com.arnava.photohub.ui.view.SearchPhotoFragment"
+        android:label="SearchPhotoFragment"
+        tools:layout="@layout/fragment_home"/>
 </navigation>

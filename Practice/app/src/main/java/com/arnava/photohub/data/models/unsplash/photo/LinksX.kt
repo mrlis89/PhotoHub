@@ -1,4 +1,4 @@
-package com.arnava.photohub.data.models.unsplash
+package com.arnava.photohub.data.models.unsplash.photo
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -12,5 +12,5 @@ data class LinksX(
     @Json(name = "download")
     val download: String,
     @Json(name = "download_location")
-    val downloadLocation: String
+    val downloadLocation: String?
 )

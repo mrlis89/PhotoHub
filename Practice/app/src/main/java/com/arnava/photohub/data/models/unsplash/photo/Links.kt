@@ -1,4 +1,4 @@
-package com.arnava.photohub.data.models.unsplash
+package com.arnava.photohub.data.models.unsplash.photo
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -14,5 +14,5 @@ data class Links(
     @Json(name = "likes")
     val likes: String,
     @Json(name = "portfolio")
-    val portfolio: String
+    val portfolio: String?
 )
