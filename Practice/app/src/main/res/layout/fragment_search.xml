@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.HomeFragment">
+    tools:context=".ui.view.SearchPhotoFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/toolBarLayout"
@@ -18,24 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/app_action_bar_size"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:titleTextColor="@color/white"
-            app:title="@string/title_home">
-
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_gravity="end"
-                android:animateLayoutChanges="true"
-                android:layoutDirection="rtl"
-                android:nextFocusLeft="@id/search"
-                android:nextFocusUp="@id/search"
-                app:iconifiedByDefault="true"
-                app:queryBackground="@android:color/transparent"
-                app:queryHint="@string/search_hint"
-                app:searchIcon="@drawable/ic_search" />
-        </androidx.appcompat.widget.Toolbar>
+            app:title="@string/title_search"
+            app:titleTextColor="@color/white" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView

@@ -1,11 +1,12 @@
 <resources>
     <string name="app_name">photoHub</string>
     <string name="title_home">Feed</string>
-    <string name="title_favourites">Collections</string>
+    <string name="title_collections">Collections</string>
     <string name="title_profile_settings">Profile</string>
     <string name="auth_canceled">Authentication failed</string>
     <string name="title_authorization">Please log in</string>
     <string name="likes">Likes: </string>
     <string name="search">Search</string>
     <string name="search_hint">Enter text to search</string>
+    <string name="title_search">Search</string>
 </resources>

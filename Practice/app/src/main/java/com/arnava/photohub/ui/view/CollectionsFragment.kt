@@ -6,14 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.arnava.photohub.databinding.FragmentFavouritesBinding
+import com.arnava.photohub.databinding.FragmentCollectionsBinding
 import com.arnava.photohub.viewmodel.CollectionsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CollectionsFragment : Fragment() {
 
-    private var _binding: FragmentFavouritesBinding? = null
+    private var _binding: FragmentCollectionsBinding? = null
     private val binding get() = _binding!!
     private val collectionsViewModel: CollectionsViewModel by viewModels()
 
@@ -22,7 +22,7 @@ class CollectionsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentFavouritesBinding.inflate(inflater, container, false)
+        _binding = FragmentCollectionsBinding.inflate(inflater, container, false)
         return binding.root
     }
 

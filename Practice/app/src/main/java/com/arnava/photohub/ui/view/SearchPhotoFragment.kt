@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.arnava.photohub.data.models.unsplash.photo.UnsplashPhoto
 import com.arnava.photohub.databinding.FragmentHomeBinding
+import com.arnava.photohub.databinding.FragmentSearchBinding
 import com.arnava.photohub.ui.paging.PagedPhotoListAdapter
 import com.arnava.photohub.viewmodel.SearchPhotosViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,7 +21,7 @@ private const val ARG_PARAM1 = "param1"
 @AndroidEntryPoint
 class SearchPhotoFragment : Fragment() {
     private var param1: String? = null
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
     private val searchPhotosViewModel: SearchPhotosViewModel by viewModels()
     private val pagedPhotoListAdapter = PagedPhotoListAdapter(
@@ -43,7 +44,7 @@ class SearchPhotoFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentSearchBinding.inflate(inflater, container, false)
         return binding.root
     }
 
