@@ -12,8 +12,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.arnava.photohub.R
-import com.arnava.photohub.utils.auth.TokenStorage
 import com.arnava.photohub.databinding.FragmentAuthBinding
+import com.arnava.photohub.utils.auth.TokenStorage
 import com.arnava.photohub.viewmodel.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,7 +33,7 @@ class AuthFragment : Fragment() {
         val localToken = authViewModel.getTokenFromLocalStorage()
         if (localToken != "") {
             TokenStorage.accessToken = localToken
-            findNavController().navigate(R.id.navigation_home)
+            findNavController().navigate(R.id.action_navigation_auth_to_navigation_home)
         }
         return binding.root
     }
