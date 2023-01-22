@@ -5,19 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
-import com.arnava.photohub.R
 import com.arnava.photohub.data.models.unsplash.collection.FoundCollection
-import com.arnava.photohub.data.models.unsplash.photo.UnsplashPhoto
 import com.arnava.photohub.databinding.FragmentCollectionsSearchBinding
-import com.arnava.photohub.ui.adapters.PagedCollectionListAdapter
 import com.arnava.photohub.ui.adapters.PagedFoundCollectionListAdapter
 import com.arnava.photohub.viewmodel.SearchCollectionsViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.runBlocking
 
 private const val ARG_PARAM1 = "param1"
 
@@ -50,7 +44,7 @@ class SearchCollectionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.recyclerViewCollection.adapter = pagedFoundCollectionListAdapter
+        binding.recyclerViewSearchCollection.adapter = pagedFoundCollectionListAdapter
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             searchCollectionsViewModel.pagingCollections.collect {
@@ -73,7 +67,7 @@ class SearchCollectionFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        binding.recyclerViewCollection.adapter = null
+        binding.recyclerViewSearchCollection.adapter = null
         _binding = null
     }
 

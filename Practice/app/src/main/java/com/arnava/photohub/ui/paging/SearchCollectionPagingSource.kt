@@ -17,7 +17,6 @@ class SearchCollectionPagingSource (
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, FoundCollection> {
         val page = params.key ?: FIRST_PAGE
-//        val res = repository.getFoundCollectionList(page,query)
         return kotlin.runCatching {
             repository.getFoundCollectionList(page,query)
         }.fold(

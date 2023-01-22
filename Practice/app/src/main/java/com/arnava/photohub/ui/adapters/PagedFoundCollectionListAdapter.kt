@@ -7,9 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.arnava.photohub.R
 import com.arnava.photohub.data.models.unsplash.collection.FoundCollection
-import com.arnava.photohub.data.models.unsplash.collection.PhotoCollection
 import com.arnava.photohub.databinding.CollectionLayoutBinding
-import com.arnava.photohub.databinding.FragmentCollectionsSearchBinding
 import com.bumptech.glide.Glide
 
 class PagedFoundCollectionListAdapter (

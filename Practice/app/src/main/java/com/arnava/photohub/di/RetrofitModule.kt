@@ -9,6 +9,7 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
@@ -24,16 +25,21 @@ object RetrofitModule {
     @Singleton
     fun providesOkHttpClient(): OkHttpClient =
         OkHttpClient.Builder()
+            .addNetworkInterceptor(
+                HttpLoggingInterceptor()
+                    .setLevel(HttpLoggingInterceptor.Level.BODY)
+            )
             .addNetworkInterceptor(AuthorizationInterceptor())
             .build()
 
     @Provides
     @Singleton
-    fun providesRetrofit(BASE_URL: String, okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .addConverterFactory(MoshiConverterFactory.create())
-        .baseUrl(BASE_URL)
-        .client(okHttpClient)
-        .build()
+    fun providesRetrofit(BASE_URL: String, okHttpClient: OkHttpClient): Retrofit =
+        Retrofit.Builder()
+            .addConverterFactory(MoshiConverterFactory.create())
+            .baseUrl(BASE_URL)
+            .client(okHttpClient)
+            .build()
 
     @Provides
     @Singleton
@@ -42,7 +48,7 @@ object RetrofitModule {
 
 }
 
-class AuthorizationInterceptor: Interceptor {
+class AuthorizationInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val token = TokenStorage.accessToken
         return chain.request().newBuilder()
