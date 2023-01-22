@@ -8,5 +8,14 @@
     <string name="likes">Likes: </string>
     <string name="search">Search</string>
     <string name="search_hint">Enter text to search</string>
-    <string name="title_search">Search</string>
+    <string name="title_search">Search result</string>
+    <string name="camera">Camera:\u0020</string>
+    <string name="iso">\nISO:\u0020</string>
+    <string name="focal">\nFocal length:\u0020</string>
+    <string name="exposure">\nExp. time:\u0020</string>
+    <string name="aperture">\nAperture:\u0020</string>
+    <string name="author">Author:</string>
+    <string name="photos_text">Photos</string>
+    <string name="title_collections_search">Search result</string>
+
 </resources>

@@ -7,7 +7,7 @@
     tools:context=".ui.view.HomeFragment">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/toolBarLayout"
+        android:id="@+id/toolbar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,15 +22,15 @@
             app:title="@string/title_home">
 
             <androidx.appcompat.widget.SearchView
-                android:id="@+id/search"
+                android:id="@+id/search_photo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_gravity="end"
                 android:animateLayoutChanges="true"
                 android:layoutDirection="rtl"
-                android:nextFocusLeft="@id/search"
-                android:nextFocusUp="@id/search"
+                android:nextFocusLeft="@id/search_photo"
+                android:nextFocusUp="@id/search_photo"
                 app:iconifiedByDefault="true"
                 app:queryBackground="@android:color/transparent"
                 app:queryHint="@string/search_hint"
@@ -40,6 +40,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"

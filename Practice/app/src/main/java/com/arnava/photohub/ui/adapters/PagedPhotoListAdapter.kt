@@ -1,4 +1,4 @@
-package com.arnava.photohub.ui.paging
+package com.arnava.photohub.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -21,23 +21,23 @@ class PagedPhotoListAdapter (
     }
 
     override fun onBindViewHolder(holder: PhotoListViewHolder, position: Int) {
-        val item = getItem(position)
+        val photo = getItem(position)
         with(holder.binding) {
-            likesCount.text = item?.likes.toString()
-            likeByUser.isSelected = item?.likedByUser ?: false
-            likeByUser.setOnClickListener {
-                item?.let { onLikeClick(it) }
-                likeByUser.isSelected = !likeByUser.isSelected
-                item?.likedByUser = likeByUser.isSelected
+            photoLikesCount.text = photo?.likes.toString()
+            photoLikeByUser.isSelected = photo?.likedByUser ?: false
+            photoLikeByUser.setOnClickListener {
+                photo?.let { onLikeClick(it) }
+                photoLikeByUser.isSelected = !photoLikeByUser.isSelected
+                photo?.likedByUser = photoLikeByUser.isSelected
             }
             Glide
                 .with(holder.itemView)
-                .load(item?.urls?.regular)
+                .load(photo?.urls?.regular)
                 .placeholder(R.drawable.placeholder_photo)
                 .into(photoView)
 
             root.setOnClickListener {
-                item?.let {
+                photo?.let {
                     onPhotoClick(it)
                 }
             }

@@ -14,13 +14,21 @@
             android:id="@+id/action_navigation_home_to_navigation_search_photo_fragment"
             app:destination="@id/navigation_search_photo_fragment"
             app:popUpTo="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_home_to_photoDetailsFragment"
+            app:destination="@id/photoDetailsFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_collections"
         android:name="com.arnava.photohub.ui.view.CollectionsFragment"
         android:label="@string/title_collections"
-        tools:layout="@layout/fragment_collections" />
+        tools:layout="@layout/fragment_collections" >
+        <action
+            android:id="@+id/action_navigation_collections_to_searchCollectionFragment"
+            app:destination="@id/searchCollectionFragment"
+            app:popUpTo="@id/navigation_collections" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_profile"
@@ -46,5 +54,22 @@
         <action
             android:id="@+id/action_navigation_search_photo_fragment_to_navigation_home2"
             app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_search_photo_fragment_to_photoDetailsFragment"
+            app:destination="@id/photoDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/photoDetailsFragment"
+        android:name="com.arnava.photohub.ui.view.PhotoDetailsFragment"
+        android:label="PhotoDetailsFragment"
+        tools:layout="@layout/fragment_photo_details"/>
+    <fragment
+        android:id="@+id/searchCollectionFragment"
+        android:name="com.arnava.photohub.ui.view.SearchCollectionFragment"
+        android:label="SearchCollectionFragment"
+        tools:layout="@layout/fragment_collections_search">
+        <action
+            android:id="@+id/action_searchCollectionFragment_to_navigation_collections"
+            app:destination="@id/navigation_collections" />
     </fragment>
 </navigation>

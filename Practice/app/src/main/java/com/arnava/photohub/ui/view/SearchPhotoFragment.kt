@@ -1,17 +1,18 @@
 package com.arnava.photohub.ui.view
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.arnava.photohub.R
 import com.arnava.photohub.data.models.unsplash.photo.UnsplashPhoto
-import com.arnava.photohub.databinding.FragmentHomeBinding
 import com.arnava.photohub.databinding.FragmentSearchBinding
-import com.arnava.photohub.ui.paging.PagedPhotoListAdapter
+import com.arnava.photohub.ui.adapters.PagedPhotoListAdapter
 import com.arnava.photohub.viewmodel.SearchPhotosViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.runBlocking
@@ -60,14 +61,14 @@ class SearchPhotoFragment : Fragment() {
     }
 
     private fun onPhotoClick(item: UnsplashPhoto) {
-//        val bundle = Bundle().apply {
-//            putParcelable("param1", item)
-//        }
-//        findNavController().navigate(R.id.action_mainFragment_to_photoFragment, bundle)
-//        parentFragmentManager.commit {
-//            replace(R.id.fragmentContainerView, CharacterDetailsFragment::class.java, bundle)
-//            addToBackStack(MainFragment::class.java.name)
-//        }
+        val bundle = Bundle().apply {
+            putString(ARG_PARAM1, item.id)
+        }
+        findNavController().navigate(R.id.action_navigation_search_photo_fragment_to_photoDetailsFragment, bundle)
+        parentFragmentManager.commit {
+            replace(R.id.nav_host_fragment, PhotoDetailsFragment::class.java, bundle)
+            addToBackStack(HomeFragment::class.java.name)
+        }
     }
 
     private fun onLikeClick(item: UnsplashPhoto) {

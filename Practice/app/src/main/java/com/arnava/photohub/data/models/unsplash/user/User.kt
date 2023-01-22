@@ -3,6 +3,7 @@ package com.arnava.photohub.data.models.unsplash.user
 import com.arnava.photohub.data.models.unsplash.photo.Links
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.parcelize.Parcelize
 
 @JsonClass(generateAdapter = true)
 data class User(

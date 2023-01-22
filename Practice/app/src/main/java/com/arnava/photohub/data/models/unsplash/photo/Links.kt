@@ -10,9 +10,9 @@ data class Links(
     @Json(name = "html")
     val html: String,
     @Json(name = "photos")
-    val photos: String,
+    val photos: String?,
     @Json(name = "likes")
-    val likes: String,
+    val likes: String?,
     @Json(name = "portfolio")
     val portfolio: String?
 )

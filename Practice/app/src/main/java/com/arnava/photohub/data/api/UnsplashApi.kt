@@ -45,7 +45,7 @@ interface UnsplashApi {
     ): List<UnsplashPhoto>
 
     @GET("collections")
-    suspend fun getListCollections(
+    suspend fun getCollectionList(
         @Query("page") page: Int,
     ): List<PhotoCollection>
 

@@ -14,11 +14,11 @@ data class FoundCollectionList(
     @Json(name = "total_pages")
     val totalPages: Int,
     @Json(name = "results")
-    val results: List<Result>
+    val results: List<FoundCollection>
 )
 
 @JsonClass(generateAdapter = true)
-data class Result(
+data class FoundCollection(
     @Json(name = "id")
     val id: Int,
     @Json(name = "title")

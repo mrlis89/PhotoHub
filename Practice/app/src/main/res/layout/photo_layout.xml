@@ -20,7 +20,7 @@
         tools:src="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/likes_text"
+        android:id="@+id/photo_likes_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -33,18 +33,18 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/likes_count"
+        android:id="@+id/photo_likes_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
         android:background="#70000000"
         android:textColor="@color/white"
         android:padding="2dp"
-        app:layout_constraintStart_toEndOf="@+id/likes_text"
-        app:layout_constraintTop_toTopOf="@+id/likes_text" />
+        app:layout_constraintStart_toEndOf="@+id/photo_likes_text"
+        app:layout_constraintTop_toTopOf="@+id/photo_likes_text" />
 
     <ImageView
-        android:id="@+id/like_by_user"
+        android:id="@+id/photo_like_by_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -52,14 +52,5 @@
         android:background="@drawable/like_by_user_selector"
         app:layout_constraintBottom_toBottomOf="@+id/photo_view"
         app:layout_constraintEnd_toEndOf="parent"/>
-
-<!--    <Button-->
-<!--        android:id="@+id/button"-->
-<!--        android:layout_width="43dp"-->
-<!--        android:layout_height="42dp"-->
-<!--        android:backgroundTint="#615F5F"-->
-<!--        android:background="@drawable/ic_baseline_like_area_36"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/photo_view" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
