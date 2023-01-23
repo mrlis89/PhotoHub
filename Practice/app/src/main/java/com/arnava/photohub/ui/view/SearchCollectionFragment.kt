@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import com.arnava.photohub.data.models.unsplash.collection.FoundCollection
 import com.arnava.photohub.databinding.FragmentCollectionsSearchBinding
 import com.arnava.photohub.ui.adapters.PagedFoundCollectionListAdapter
+import com.arnava.photohub.ui.adapters.temp.TempListAdapter
 import com.arnava.photohub.viewmodel.SearchCollectionsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,6 +23,7 @@ class SearchCollectionFragment : Fragment() {
     private val binding get() = _binding!!
     private val searchCollectionsViewModel: SearchCollectionsViewModel by viewModels()
     private val pagedFoundCollectionListAdapter = PagedFoundCollectionListAdapter { onCollectionClick(it) }
+    private val tempListAdapter = TempListAdapter { onCollectionClick(it) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,11 +46,11 @@ class SearchCollectionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.recyclerViewSearchCollection.adapter = pagedFoundCollectionListAdapter
+        binding.recyclerViewSearchCollection.adapter = tempListAdapter
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             searchCollectionsViewModel.pagingCollections.collect {
-                pagedFoundCollectionListAdapter.submitData(it)
+                tempListAdapter.setData(it)
             }
         }
     }

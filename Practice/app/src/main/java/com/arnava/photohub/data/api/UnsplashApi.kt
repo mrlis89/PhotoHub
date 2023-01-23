@@ -21,16 +21,16 @@ interface UnsplashApi {
         @Query("query") query: String,
     ): FoundPhotoList
 
-    @GET("photos/{id}")
-    suspend fun getPhotoDetailInfo(
-        @Path("id") id: String
-    ): DetailedPhoto
-
     @GET("search/collections")
     suspend fun searchCollections(
         @Query("page") page: Int,
         @Query("query") query: String,
     ): FoundCollectionList
+
+    @GET("photos/{id}")
+    suspend fun getPhotoDetailInfo(
+        @Path("id") id: String
+    ): DetailedPhoto
 
     @GET("users/{username}/likes")
     suspend fun getUserLikedPhotos(

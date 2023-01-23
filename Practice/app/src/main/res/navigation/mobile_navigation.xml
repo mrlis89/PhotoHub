@@ -9,7 +9,7 @@
         android:id="@+id/navigation_home"
         android:name="com.arnava.photohub.ui.view.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_navigation_home_to_navigation_search_photo_fragment"
             app:destination="@id/navigation_search_photo_fragment"
@@ -23,11 +23,10 @@
         android:id="@+id/navigation_collections"
         android:name="com.arnava.photohub.ui.view.CollectionsFragment"
         android:label="@string/title_collections"
-        tools:layout="@layout/fragment_collections" >
+        tools:layout="@layout/fragment_collections">
         <action
             android:id="@+id/action_navigation_collections_to_searchCollectionFragment"
-            app:destination="@id/searchCollectionFragment"
-            app:popUpTo="@id/navigation_collections" />
+            app:destination="@id/searchCollectionFragment" />
     </fragment>
 
     <fragment
@@ -62,7 +61,7 @@
         android:id="@+id/photoDetailsFragment"
         android:name="com.arnava.photohub.ui.view.PhotoDetailsFragment"
         android:label="PhotoDetailsFragment"
-        tools:layout="@layout/fragment_photo_details"/>
+        tools:layout="@layout/fragment_photo_details" />
     <fragment
         android:id="@+id/searchCollectionFragment"
         android:name="com.arnava.photohub.ui.view.SearchCollectionFragment"

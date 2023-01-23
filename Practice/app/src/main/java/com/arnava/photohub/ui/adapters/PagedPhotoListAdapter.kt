@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide
 class PagedPhotoListAdapter (
     private val onPhotoClick: (UnsplashPhoto) -> Unit,
     private val onLikeClick: (UnsplashPhoto) -> Unit,
-) : PagingDataAdapter<UnsplashPhoto, PhotoListViewHolder>(DiffUtilCallback()) {
+) : PagingDataAdapter<UnsplashPhoto, PhotoListViewHolder>(PhotoDiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoListViewHolder {
         val binding = PhotoLayoutBinding.inflate(LayoutInflater.from(parent.context))
@@ -49,7 +49,7 @@ class PagedPhotoListAdapter (
 class PhotoListViewHolder(val binding: PhotoLayoutBinding) :
     RecyclerView.ViewHolder(binding.root)
 
-class DiffUtilCallback : DiffUtil.ItemCallback<UnsplashPhoto>() {
+class PhotoDiffUtilCallback : DiffUtil.ItemCallback<UnsplashPhoto>() {
     override fun areItemsTheSame(oldItem: UnsplashPhoto, newItem: UnsplashPhoto) =
         oldItem.id == newItem.id
 
