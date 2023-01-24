@@ -25,15 +25,6 @@ class PhotoDetailsFragment : Fragment() {
     private val binding get() = _binding!!
     private val photoDetailsViewModel: PhotoDetailsViewModel by viewModels()
 
-    override fun onResume() {
-        super.onResume()
-        arguments?.let {
-            it.getString(ARG_PARAM1)?.let { photoId ->
-                photoDetailsViewModel.loadPhotoById(photoId)
-            }
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
