@@ -1,4 +1,4 @@
-package com.arnava.photohub.ui.view
+package com.arnava.photohub.ui.view.photos
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,8 +11,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.arnava.photohub.R
 import com.arnava.photohub.data.models.unsplash.photo.UnsplashPhoto
+import com.arnava.photohub.databinding.FragmentLikedPhotosBinding
 import com.arnava.photohub.databinding.FragmentSearchBinding
 import com.arnava.photohub.ui.adapters.PagedPhotoListAdapter
+import com.arnava.photohub.ui.view.profile.ProfileFragment
+import com.arnava.photohub.viewmodel.LikedPhotosViewModel
 import com.arnava.photohub.viewmodel.SearchPhotosViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.runBlocking
@@ -20,32 +23,21 @@ import kotlinx.coroutines.runBlocking
 private const val ARG_PARAM1 = "param1"
 
 @AndroidEntryPoint
-class SearchPhotoFragment : Fragment() {
-    private var param1: String? = null
-    private var _binding: FragmentSearchBinding? = null
+class LikedPhotoFragment : Fragment() {
+    private var _binding: FragmentLikedPhotosBinding? = null
     private val binding get() = _binding!!
-    private val searchPhotosViewModel: SearchPhotosViewModel by viewModels()
+    private val likedPhotosViewModel: LikedPhotosViewModel by viewModels()
     private val pagedPhotoListAdapter = PagedPhotoListAdapter(
         { onPhotoClick(it) },
         { onLikeClick(it) }
     )
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-        }
-        param1?.let {
-            searchPhotosViewModel.loadFoundPhotos(it)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSearchBinding.inflate(inflater, container, false)
+        _binding = FragmentLikedPhotosBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -54,27 +46,27 @@ class SearchPhotoFragment : Fragment() {
         binding.recyclerView.adapter = pagedPhotoListAdapter
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            searchPhotosViewModel.pagingPhotos.collect {
+            likedPhotosViewModel.pagingPhotos.collect {
                 pagedPhotoListAdapter.submitData(it)
             }
         }
     }
 
     private fun onPhotoClick(item: UnsplashPhoto) {
-        val bundle = Bundle().apply {
-            putString(ARG_PARAM1, item.id)
-        }
-        findNavController().navigate(R.id.action_navigation_search_photo_fragment_to_photoDetailsFragment, bundle)
-        parentFragmentManager.commit {
-            replace(R.id.nav_host_fragment, PhotoDetailsFragment::class.java, bundle)
-            addToBackStack(HomeFragment::class.java.name)
-        }
+//        val bundle = Bundle().apply {
+//            putString(ARG_PARAM1, item.id)
+//        }
+//        findNavController().navigate(R.id.action_navigation_profile_to_photoDetailsFragment, bundle)
+//        parentFragmentManager.commit {
+//            replace(R.id.nav_host_fragment, PhotoDetailsFragment::class.java, bundle)
+//            addToBackStack(ProfileFragment::class.java.name)
+//        }
     }
 
     private fun onLikeClick(item: UnsplashPhoto) {
         runBlocking {
-            if (!item.likedByUser) searchPhotosViewModel.likePhoto(item.id)
-            else searchPhotosViewModel.unlikePhoto(item.id)
+            if (!item.likedByUser) likedPhotosViewModel.likePhoto(item.id)
+            else likedPhotosViewModel.unlikePhoto(item.id)
         }
     }
 

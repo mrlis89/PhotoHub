@@ -1,4 +1,4 @@
-package com.arnava.photohub.ui.view
+package com.arnava.photohub.ui.view.photos
 
 import android.os.Bundle
 import android.view.LayoutInflater

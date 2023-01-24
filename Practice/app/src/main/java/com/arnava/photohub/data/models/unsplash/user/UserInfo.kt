@@ -1,8 +1,8 @@
 package com.arnava.photohub.data.models.unsplash.user
-import com.arnava.photohub.data.models.unsplash.photo.Links
-import com.squareup.moshi.JsonClass
 
+import com.arnava.photohub.data.models.unsplash.photo.Links
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
 
 @JsonClass(generateAdapter = true)
@@ -18,11 +18,11 @@ data class UserInfo(
     @Json(name = "last_name")
     val lastName: String,
     @Json(name = "twitter_username")
-    val twitterUsername: String,
+    val twitterUsername: String?,
     @Json(name = "portfolio_url")
     val portfolioUrl: Any?,
     @Json(name = "bio")
-    val bio: String,
+    val bio: String?,
     @Json(name = "location")
     val location: Any?,
     @Json(name = "total_likes")
@@ -38,10 +38,12 @@ data class UserInfo(
     @Json(name = "uploads_remaining")
     val uploadsRemaining: Int,
     @Json(name = "instagram_username")
-    val instagramUsername: String,
+    val instagramUsername: String?,
     @Json(name = "email")
     val email: String,
     @Json(name = "links")
-    val links: Links
+    val links: Links,
+    @Json(name = "profile_image")
+    val profileImage: ProfileImage
 )
 

@@ -1,4 +1,4 @@
-package com.arnava.photohub.ui.view
+package com.arnava.photohub.ui.view.collections
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,6 +14,7 @@ import com.arnava.photohub.R
 import com.arnava.photohub.data.models.unsplash.collection.PhotoCollection
 import com.arnava.photohub.databinding.FragmentCollectionsBinding
 import com.arnava.photohub.ui.adapters.PagedCollectionListAdapter
+import com.arnava.photohub.ui.view.home.HomeFragment
 import com.arnava.photohub.viewmodel.CollectionsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -66,14 +67,14 @@ class CollectionsFragment : Fragment() {
     }
 
     private fun onCollectionClick(item: PhotoCollection) {
-//        val bundle = Bundle().apply {
-//            putString(ARG_PARAM1, item.id)
-//        }
-//        findNavController().navigate(R.id.action_navigation_home_to_photoDetailsFragment, bundle)
-//        parentFragmentManager.commit {
-//            replace(R.id.nav_host_fragment, PhotoDetailsFragment::class.java, bundle)
-//            addToBackStack(HomeFragment::class.java.name)
-//        }
+        val bundle = Bundle().apply {
+            putString(ARG_PARAM1, item.id)
+        }
+        findNavController().navigate(R.id.action_navigation_collections_to_collections_photos_fragment, bundle)
+        parentFragmentManager.commit {
+            replace(R.id.nav_host_fragment, CollectionsPhotosFragment::class.java, bundle)
+            addToBackStack(HomeFragment::class.java.name)
+        }
     }
 
     override fun onDestroyView() {

@@ -9,6 +9,8 @@ import androidx.lifecycle.viewModelScope
 import com.arnava.photohub.R
 import com.arnava.photohub.data.repository.AuthRepository
 import com.arnava.photohub.data.repository.LocalRepository
+import com.arnava.photohub.data.repository.UnsplashNetworkRepository
+import com.arnava.photohub.utils.auth.UserInfoStorage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.channels.Channel
@@ -17,6 +19,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import net.openid.appauth.AuthorizationException
 import net.openid.appauth.AuthorizationResponse
 import net.openid.appauth.AuthorizationService
@@ -27,7 +30,8 @@ import javax.inject.Inject
 class AuthViewModel @Inject constructor(
     @ApplicationContext private val appContext: Context,
     private val localRepository: LocalRepository,
-    private val authRepository: AuthRepository
+    private val authRepository: AuthRepository,
+    private val unsplashNetworkRepository: UnsplashNetworkRepository
 ) : ViewModel() {
     private val authService: AuthorizationService = AuthorizationService(appContext)
 
@@ -89,6 +93,13 @@ class AuthViewModel @Inject constructor(
 
     fun getTokenFromLocalStorage() = localRepository.getTokenFromSharedPrefs()
     fun clearToken() = authRepository.corruptAccessToken()
+
+    fun saveUserNameToStorage() {
+        runBlocking {
+            val userInfo = unsplashNetworkRepository.getUserInfo()
+            UserInfoStorage.userInfo = userInfo
+        }
+    }
 
     override fun onCleared() {
         super.onCleared()

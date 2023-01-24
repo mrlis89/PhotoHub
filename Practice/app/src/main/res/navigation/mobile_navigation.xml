@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.arnava.photohub.ui.view.HomeFragment"
+        android:name="com.arnava.photohub.ui.view.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home">
         <action
@@ -21,19 +21,27 @@
 
     <fragment
         android:id="@+id/navigation_collections"
-        android:name="com.arnava.photohub.ui.view.CollectionsFragment"
+        android:name="com.arnava.photohub.ui.view.collections.CollectionsFragment"
         android:label="@string/title_collections"
         tools:layout="@layout/fragment_collections">
         <action
             android:id="@+id/action_navigation_collections_to_searchCollectionFragment"
             app:destination="@id/searchCollectionFragment" />
+        <action
+            android:id="@+id/action_navigation_collections_to_collections_photos_fragment"
+            app:destination="@id/collections_photos_fragment" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.arnava.photohub.ui.view.ProfileFragment"
+        android:name="com.arnava.photohub.ui.view.profile.ProfileFragment"
         android:label="@string/title_profile_settings"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_navigation_profile_to_photoDetailsFragment"
+            app:destination="@id/photoDetailsFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_auth"
         android:name="com.arnava.photohub.ui.view.AuthFragment"
@@ -47,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_search_photo_fragment"
-        android:name="com.arnava.photohub.ui.view.SearchPhotoFragment"
+        android:name="com.arnava.photohub.ui.view.photos.SearchPhotoFragment"
         android:label="SearchPhotoFragment"
         tools:layout="@layout/fragment_home">
         <action
@@ -59,16 +67,33 @@
     </fragment>
     <fragment
         android:id="@+id/photoDetailsFragment"
-        android:name="com.arnava.photohub.ui.view.PhotoDetailsFragment"
+        android:name="com.arnava.photohub.ui.view.photos.PhotoDetailsFragment"
         android:label="PhotoDetailsFragment"
         tools:layout="@layout/fragment_photo_details" />
     <fragment
         android:id="@+id/searchCollectionFragment"
-        android:name="com.arnava.photohub.ui.view.SearchCollectionFragment"
+        android:name="com.arnava.photohub.ui.view.collections.SearchCollectionFragment"
         android:label="SearchCollectionFragment"
         tools:layout="@layout/fragment_collections_search">
         <action
             android:id="@+id/action_searchCollectionFragment_to_navigation_collections"
             app:destination="@id/navigation_collections" />
+        <action
+            android:id="@+id/action_searchCollectionFragment_to_collections_photos_fragment"
+            app:destination="@id/collections_photos_fragment" />
     </fragment>
+    <fragment
+        android:id="@+id/collections_photos_fragment"
+        android:name="com.arnava.photohub.ui.view.collections.CollectionsPhotosFragment"
+        android:label="CollectionsPhotosFragment"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_collections_photos_fragment_to_photoDetailsFragment"
+            app:destination="@id/photoDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/likedPhotoFragment"
+        android:name="com.arnava.photohub.ui.view.photos.LikedPhotoFragment"
+        android:label="LikedPhotoFragment"
+        tools:layout="@layout/fragment_liked_photos"/>
 </navigation>

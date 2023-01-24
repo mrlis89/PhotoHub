@@ -1,4 +1,4 @@
-package com.arnava.photohub.ui.adapters.temp
+package com.arnava.photohub.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,7 @@ import com.arnava.photohub.data.models.unsplash.collection.FoundCollection
 import com.arnava.photohub.databinding.CollectionLayoutBinding
 import com.bumptech.glide.Glide
 
-class TempListAdapter(
+class FoundCollectionListAdapter(
     private val onCollectionClick: (FoundCollection) -> Unit
 ) :
     RecyclerView.Adapter<ColListViewHolder>() {

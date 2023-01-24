@@ -33,6 +33,7 @@ class AuthFragment : Fragment() {
         val localToken = authViewModel.getTokenFromLocalStorage()
         if (localToken != "") {
             TokenStorage.accessToken = localToken
+            authViewModel.saveUserNameToStorage()
             findNavController().navigate(R.id.action_navigation_auth_to_navigation_home)
         }
         return binding.root

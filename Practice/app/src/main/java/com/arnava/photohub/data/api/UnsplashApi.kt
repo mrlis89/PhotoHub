@@ -25,6 +25,7 @@ interface UnsplashApi {
     suspend fun searchCollections(
         @Query("page") page: Int,
         @Query("query") query: String,
+        @Query("per_page") perPage: Int = 30,
     ): FoundCollectionList
 
     @GET("photos/{id}")

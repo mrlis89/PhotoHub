@@ -12,6 +12,15 @@ class UnsplashNetworkRepository @Inject constructor (private val unsplashApi: Un
     suspend fun getPhotoList(page: Int = 1): List<UnsplashPhoto> {
        return unsplashApi.getPhotoList(page)
     }
+
+    suspend fun getCollectionsPhotos(id:String, page: Int = 1): List<UnsplashPhoto> {
+       return unsplashApi.getCollectionPhotos(id, page)
+    }
+
+    suspend fun getUserLikedPhotos(userId:String, page: Int = 1): List<UnsplashPhoto> {
+       return unsplashApi.getUserLikedPhotos(userId, page)
+    }
+
     suspend fun getCollectionList(page: Int = 1): List<PhotoCollection> {
        return unsplashApi.getCollectionList(page)
     }
@@ -35,4 +44,6 @@ class UnsplashNetworkRepository @Inject constructor (private val unsplashApi: Un
     suspend fun getDetailedPhoto(id: String): DetailedPhoto {
         return unsplashApi.getPhotoDetailInfo(id)
     }
+
+    suspend fun getUserInfo() = unsplashApi.getUserInfo()
 }
