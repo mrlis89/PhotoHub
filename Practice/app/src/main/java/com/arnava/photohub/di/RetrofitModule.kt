@@ -1,7 +1,7 @@
 package com.arnava.photohub.di
 
 import com.arnava.photohub.data.api.UnsplashApi
-import com.arnava.photohub.utils.auth.TokenStorage
+import com.arnava.photohub.data.local.TokenStorage
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,6 +12,7 @@ import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -30,6 +31,7 @@ object RetrofitModule {
                     .setLevel(HttpLoggingInterceptor.Level.BODY)
             )
             .addNetworkInterceptor(AuthorizationInterceptor())
+            .pingInterval(500, TimeUnit.MILLISECONDS)
             .build()
 
     @Provides

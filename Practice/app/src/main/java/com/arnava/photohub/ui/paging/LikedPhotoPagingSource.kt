@@ -4,7 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.arnava.photohub.data.models.unsplash.photo.UnsplashPhoto
 import com.arnava.photohub.data.repository.UnsplashNetworkRepository
-import com.arnava.photohub.utils.auth.UserInfoStorage
+import com.arnava.photohub.data.local.UserInfoStorage
 
 class LikedPhotoPagingSource(
     private val repository: UnsplashNetworkRepository

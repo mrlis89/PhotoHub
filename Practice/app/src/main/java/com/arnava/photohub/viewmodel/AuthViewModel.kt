@@ -10,7 +10,7 @@ import com.arnava.photohub.R
 import com.arnava.photohub.data.repository.AuthRepository
 import com.arnava.photohub.data.repository.LocalRepository
 import com.arnava.photohub.data.repository.UnsplashNetworkRepository
-import com.arnava.photohub.utils.auth.UserInfoStorage
+import com.arnava.photohub.data.local.UserInfoStorage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.channels.Channel

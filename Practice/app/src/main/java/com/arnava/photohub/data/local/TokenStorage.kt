@@ -1,4 +1,4 @@
-package com.arnava.photohub.utils.auth
+package com.arnava.photohub.data.local
 
 object TokenStorage  {
     var accessToken: String? = null

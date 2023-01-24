@@ -5,20 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
 import com.arnava.photohub.R
 import com.arnava.photohub.data.models.unsplash.photo.UnsplashPhoto
 import com.arnava.photohub.databinding.FragmentHomeBinding
 import com.arnava.photohub.ui.adapters.PagedPhotoListAdapter
 import com.arnava.photohub.ui.view.photos.PhotoDetailsFragment
 import com.arnava.photohub.ui.view.photos.SearchPhotoFragment
-import com.arnava.photohub.utils.auth.UserInfoStorage
+import com.arnava.photohub.data.local.UserInfoStorage
 import com.arnava.photohub.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.runBlocking
 private const val ARG_PARAM1 = "param1"
 @AndroidEntryPoint
@@ -68,6 +71,18 @@ class HomeFragment : Fragment() {
             homeViewModel.pagingPhotos.collect {
                 pagedPhotoListAdapter.submitData(it)
             }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            pagedPhotoListAdapter.loadStateFlow.collectLatest {
+                binding.progressBtn.isVisible = it.refresh is LoadState.Loading
+                if (it.refresh is LoadState.Loading) binding.refreshLayout.isVisible = false
+                if (it.refresh is LoadState.Error || it.append is LoadState.Error) binding.refreshLayout.isVisible = true
+            }
+        }
+
+        binding.refreshBtn.setOnClickListener {
+            pagedPhotoListAdapter.refresh()
         }
     }
 

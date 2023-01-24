@@ -1,7 +1,7 @@
 package com.arnava.photohub.data.repository
 
 import com.arnava.photohub.utils.auth.AppAuth
-import com.arnava.photohub.utils.auth.TokenStorage
+import com.arnava.photohub.data.local.TokenStorage
 import net.openid.appauth.AuthorizationRequest
 import net.openid.appauth.AuthorizationService
 import net.openid.appauth.EndSessionRequest

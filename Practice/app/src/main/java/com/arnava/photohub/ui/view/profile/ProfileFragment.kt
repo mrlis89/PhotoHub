@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.arnava.photohub.R
 import com.arnava.photohub.databinding.FragmentProfileBinding
 import com.arnava.photohub.ui.paging.ViewPagerAdapter
-import com.arnava.photohub.utils.auth.UserInfoStorage
+import com.arnava.photohub.data.local.UserInfoStorage
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 

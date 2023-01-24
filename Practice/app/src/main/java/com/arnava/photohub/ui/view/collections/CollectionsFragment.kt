@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
 import com.arnava.photohub.R
 import com.arnava.photohub.data.models.unsplash.collection.PhotoCollection
 import com.arnava.photohub.databinding.FragmentCollectionsBinding
@@ -17,6 +19,7 @@ import com.arnava.photohub.ui.adapters.PagedCollectionListAdapter
 import com.arnava.photohub.ui.view.home.HomeFragment
 import com.arnava.photohub.viewmodel.CollectionsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 
 private const val ARG_PARAM1 = "param1"
 
@@ -63,6 +66,17 @@ class CollectionsFragment : Fragment() {
             collectionsViewModel.pagingPhotos.collect {
                 pagedCollectionListAdapter.submitData(it)
             }
+        }
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            pagedCollectionListAdapter.loadStateFlow.collectLatest {
+                binding.progressBtn.isVisible = it.refresh is LoadState.Loading
+                if (it.refresh is LoadState.Loading) binding.refreshLayout.isVisible = false
+                if (it.refresh is LoadState.Error || it.append is LoadState.Error) binding.refreshLayout.isVisible = true
+            }
+        }
+
+        binding.refreshBtn.setOnClickListener {
+            pagedCollectionListAdapter.refresh()
         }
     }
 

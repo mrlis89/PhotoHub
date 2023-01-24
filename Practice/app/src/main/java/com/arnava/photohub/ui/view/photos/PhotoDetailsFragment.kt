@@ -25,8 +25,8 @@ class PhotoDetailsFragment : Fragment() {
     private val binding get() = _binding!!
     private val photoDetailsViewModel: PhotoDetailsViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onResume() {
+        super.onResume()
         arguments?.let {
             it.getString(ARG_PARAM1)?.let { photoId ->
                 photoDetailsViewModel.loadPhotoById(photoId)
@@ -39,12 +39,18 @@ class PhotoDetailsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        arguments?.let {
+            it.getString(ARG_PARAM1)?.let { photoId ->
+                photoDetailsViewModel.loadPhotoById(photoId)
+            }
+        }
         _binding = FragmentPhotoDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             photoDetailsViewModel.photo.collect { detailedPhoto ->
                 with(binding) {
@@ -96,6 +102,7 @@ class PhotoDetailsFragment : Fragment() {
                 }
             }
         }
+
     }
 
     private fun likeClick(item: DetailedPhoto) {

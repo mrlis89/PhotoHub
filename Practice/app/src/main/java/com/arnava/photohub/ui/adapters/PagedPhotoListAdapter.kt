@@ -2,12 +2,15 @@ package com.arnava.photohub.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.arnava.photohub.App
 import com.arnava.photohub.R
 import com.arnava.photohub.data.models.unsplash.photo.UnsplashPhoto
 import com.arnava.photohub.databinding.PhotoLayoutBinding
+import com.arnava.photohub.utils.common.NetworkState
 import com.bumptech.glide.Glide
 
 class PagedPhotoListAdapter (
@@ -37,9 +40,11 @@ class PagedPhotoListAdapter (
                 .into(photoView)
 
             root.setOnClickListener {
-                photo?.let {
-                    onPhotoClick(it)
-                }
+                if (NetworkState.isConnected()) {
+                    photo?.let {
+                        onPhotoClick(it)
+                    }
+                } else NetworkState.connectionLostToast()
             }
         }
     }
