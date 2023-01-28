@@ -1,5 +1,6 @@
 package com.arnava.photohub.ui.view.home
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,19 +13,19 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.arnava.photohub.R
 import com.arnava.photohub.data.models.unsplash.photo.UnsplashPhoto
 import com.arnava.photohub.databinding.FragmentHomeBinding
 import com.arnava.photohub.ui.adapters.PagedPhotoListAdapter
 import com.arnava.photohub.ui.view.photos.PhotoDetailsFragment
 import com.arnava.photohub.ui.view.photos.SearchPhotoFragment
-import com.arnava.photohub.data.local.UserInfoStorage
-import com.arnava.photohub.data.repository.DbRepository
 import com.arnava.photohub.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.runBlocking
-import javax.inject.Inject
+
 
 private const val ARG_PARAM1 = "param1"
 @AndroidEntryPoint
@@ -48,7 +49,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val name = UserInfoStorage.userInfo
+        if (requireContext().resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            binding.recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        } else {
+            binding.recyclerView.layoutManager = StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL)
+        }
         binding.recyclerView.adapter = pagedPhotoListAdapter
         binding.searchPhoto.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextChange(newText: String?): Boolean {

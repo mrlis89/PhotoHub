@@ -1,5 +1,6 @@
 package com.arnava.photohub.ui.view.photos
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.arnava.photohub.data.models.unsplash.photo.UnsplashPhoto
 import com.arnava.photohub.databinding.FragmentDbPhotosBinding
 import com.arnava.photohub.databinding.FragmentLikedPhotosBinding
@@ -37,6 +39,11 @@ class DbPhotosFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (requireContext().resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            binding.recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        } else {
+            binding.recyclerView.layoutManager = StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL)
+        }
         binding.recyclerView.adapter = photoDbListAdapter
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {

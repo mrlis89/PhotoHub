@@ -183,11 +183,11 @@ class PhotoDetailsFragment : Fragment() {
                             }
                         }
                         WorkInfo.State.FAILED -> {
-                            Toast.makeText(requireContext(), "Download in failed", Toast.LENGTH_LONG)
+                            Toast.makeText(requireContext(), "Download in failed", Toast.LENGTH_SHORT)
                                 .show()
                         }
                         WorkInfo.State.RUNNING -> {
-                            Toast.makeText(requireContext(), "Download in progress...", Toast.LENGTH_LONG)
+                            Toast.makeText(requireContext(), "Download in progress...", Toast.LENGTH_SHORT)
                                 .show()
                         }
                         else -> {
