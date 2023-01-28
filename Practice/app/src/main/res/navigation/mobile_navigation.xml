@@ -96,4 +96,9 @@
         android:name="com.arnava.photohub.ui.view.photos.LikedPhotoFragment"
         android:label="LikedPhotoFragment"
         tools:layout="@layout/fragment_liked_photos"/>
+    <fragment
+        android:id="@+id/db_photos_fragment"
+        android:name="com.arnava.photohub.ui.view.photos.DbPhotosFragment"
+        android:label="DbPhotosFragment"
+        tools:layout="@layout/fragment_db_photos"/>
 </navigation>

@@ -1,5 +1,9 @@
 package com.arnava.photohub.viewmodel
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.arnava.photohub.data.models.unsplash.photo.DetailedPhoto

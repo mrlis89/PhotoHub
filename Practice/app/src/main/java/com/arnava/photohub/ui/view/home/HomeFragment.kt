@@ -19,14 +19,16 @@ import com.arnava.photohub.ui.adapters.PagedPhotoListAdapter
 import com.arnava.photohub.ui.view.photos.PhotoDetailsFragment
 import com.arnava.photohub.ui.view.photos.SearchPhotoFragment
 import com.arnava.photohub.data.local.UserInfoStorage
+import com.arnava.photohub.data.repository.DbRepository
 import com.arnava.photohub.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.runBlocking
+import javax.inject.Inject
+
 private const val ARG_PARAM1 = "param1"
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
-
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val homeViewModel: HomeViewModel by viewModels()

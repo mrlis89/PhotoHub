@@ -1,0 +1,20 @@
+package com.arnava.photohub.viewmodel
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.arnava.photohub.data.db.PhotoDb
+import com.arnava.photohub.data.repository.DbRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
+import javax.inject.Inject
+
+@HiltViewModel
+class PhotoDbViewModel @Inject constructor(private val repository: DbRepository) : ViewModel() {
+    val photos = repository.getPhotos().stateIn(
+        viewModelScope,
+        SharingStarted.WhileSubscribed(5000),
+        emptyList()
+    )
+}

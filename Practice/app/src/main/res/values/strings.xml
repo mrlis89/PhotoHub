@@ -17,5 +17,7 @@
     <string name="author">Author:</string>
     <string name="photos_text">Photos</string>
     <string name="title_collections_search">Search result</string>
+    <string name="title_db_photos">Cached photos</string>
+    <string name="notif_open_photo">Open photo</string>
 
 </resources>

@@ -288,6 +288,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:constraint_referenced_ids="location_icon,location_text,photo_image_layout,download_btn,total_downloads,download_text,tags_text,exif_layout,share_btn" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,10 +32,26 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launchWhenStarted {
             connectivityObserver.observe().collect {
                 when (it) {
-                    ConnectivityObserver.Status.Available -> Toast.makeText(this@MainActivity, "connection available", Toast.LENGTH_LONG).show()
-                    ConnectivityObserver.Status.Unavailable -> Toast.makeText(this@MainActivity, "connection unavailable", Toast.LENGTH_LONG).show()
-                    ConnectivityObserver.Status.Losing -> Toast.makeText(this@MainActivity, "connection losing", Toast.LENGTH_LONG).show()
-                    ConnectivityObserver.Status.Lost -> Toast.makeText(this@MainActivity, "connection lost", Toast.LENGTH_LONG).show()
+                    ConnectivityObserver.Status.Available -> Toast.makeText(
+                        this@MainActivity,
+                        "connection available",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    ConnectivityObserver.Status.Unavailable -> Toast.makeText(
+                        this@MainActivity,
+                        "connection unavailable",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    ConnectivityObserver.Status.Losing -> Toast.makeText(
+                        this@MainActivity,
+                        "connection losing",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    ConnectivityObserver.Status.Lost -> {
+                        Toast.makeText(this@MainActivity, "connection lost", Toast.LENGTH_LONG)
+                            .show()
+                        navController.navigate(R.id.db_photos_fragment)
+                    }
                 }
 
             }
