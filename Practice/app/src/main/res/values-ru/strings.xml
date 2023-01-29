@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">photoHub</string>
+    <string name="title_home">Лента</string>
+    <string name="title_collections">Коллекции</string>
+    <string name="title_profile_settings">Профиль</string>
+    <string name="auth_canceled">Аутентификация не завершена</string>
+    <string name="title_authorization">Выполните вход</string>
+    <string name="likes">Лайков: </string>
+    <string name="search">Поиск</string>
+    <string name="search_hint">Введите текст для поиска</string>
+    <string name="title_search">Результаты поиска</string>
+    <string name="camera">Камера:\u0020</string>
+    <string name="iso">\nISO:\u0020</string>
+    <string name="focal">\nФокусное расстояние:\u0020</string>
+    <string name="exposure">\nВремя экспозиции:\u0020</string>
+    <string name="aperture">\nДиафрагма:\u0020</string>
+    <string name="author">Автор:</string>
+    <string name="photos_text">Фотографии</string>
+    <string name="title_collections_search">Результаты поиска</string>
+    <string name="title_db_photos">Фото из кэша</string>
+    <string name="notif_open_photo">Открыть фото</string>
+    <string name="photo_base_url">https://unsplash.com/photos/</string>
+    <string name="share_photo">Поделиться фото</string>
+    <string name="login_via_unsplash">войти через Unsplash</string>
+    <string name="downloads">Загрузок:</string>
+</resources>
