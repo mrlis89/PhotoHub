@@ -2,7 +2,6 @@ package com.arnava.photohub.ui.view.photos
 
 import android.Manifest
 import android.app.PendingIntent
-import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -84,11 +83,16 @@ class PhotoDetailsFragment : Fragment() {
                         likeIcon.isSelected = !likeIcon.isSelected
                         detailedPhoto?.likedByUser = likeIcon.isSelected
                     }
+                    shareBtn.setOnClickListener {
+                        shareLink(detailedPhoto?.id ?: "")
+                    }
+                    //photo
                     Glide
                         .with(this@PhotoDetailsFragment)
                         .load(detailedPhoto?.urls?.full)
                         .placeholder(R.drawable.placeholder_photo)
                         .into(photoView)
+                    //avatar
                     Glide
                         .with(this@PhotoDetailsFragment)
                         .load(detailedPhoto?.user?.profileImage?.medium)
@@ -183,11 +187,19 @@ class PhotoDetailsFragment : Fragment() {
                             }
                         }
                         WorkInfo.State.FAILED -> {
-                            Toast.makeText(requireContext(), "Download in failed", Toast.LENGTH_SHORT)
+                            Toast.makeText(
+                                requireContext(),
+                                "Download in failed",
+                                Toast.LENGTH_SHORT
+                            )
                                 .show()
                         }
                         WorkInfo.State.RUNNING -> {
-                            Toast.makeText(requireContext(), "Download in progress...", Toast.LENGTH_SHORT)
+                            Toast.makeText(
+                                requireContext(),
+                                "Download in progress...",
+                                Toast.LENGTH_SHORT
+                            )
                                 .show()
                         }
                         else -> {
@@ -204,11 +216,28 @@ class PhotoDetailsFragment : Fragment() {
             .setContentTitle(CHANNEL_DESC)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-            .addAction(R.drawable.placeholder_photo, getString(R.string.notif_open_photo), pendingIntent)
+            .addAction(
+                R.drawable.placeholder_photo,
+                getString(R.string.notif_open_photo),
+                pendingIntent
+            )
             .setAutoCancel(true)
             .build()
 
         NotificationManagerCompat.from(requireContext()).notify(NOTIFICATION_ID, notification)
+    }
+
+    private fun shareLink(photoId: String) {
+        val urlLink = resources.getString(R.string.photo_base_url) + photoId
+        val intent = Intent()
+        with(intent) {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, urlLink)
+            type = "text/plain"
+        }
+        val chooserIntent =
+            Intent.createChooser(intent, requireContext().getString(R.string.share_photo))
+        context?.startActivity(chooserIntent)
     }
 
     private fun likeClick(item: DetailedPhoto) {

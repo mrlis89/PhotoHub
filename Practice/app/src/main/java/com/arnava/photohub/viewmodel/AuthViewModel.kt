@@ -2,6 +2,7 @@ package com.arnava.photohub.viewmodel
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.activity.result.ActivityResultLauncher
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.lifecycle.ViewModel
@@ -34,6 +35,7 @@ class AuthViewModel @Inject constructor(
     private val unsplashNetworkRepository: UnsplashNetworkRepository
 ) : ViewModel() {
     private val authService: AuthorizationService = AuthorizationService(appContext)
+    var intentExternalData: Uri? = null
 
     private val toastEventChannel = Channel<String>(Channel.BUFFERED)
     val toastFlow = toastEventChannel.receiveAsFlow()

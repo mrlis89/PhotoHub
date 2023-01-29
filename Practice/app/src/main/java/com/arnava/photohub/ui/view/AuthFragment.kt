@@ -8,22 +8,27 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.arnava.photohub.R
-import com.arnava.photohub.databinding.FragmentAuthBinding
 import com.arnava.photohub.data.local.TokenStorage
+import com.arnava.photohub.databinding.FragmentAuthBinding
+import com.arnava.photohub.ui.view.home.HomeFragment
+import com.arnava.photohub.ui.view.photos.PhotoDetailsFragment
 import com.arnava.photohub.utils.common.NetworkState
 import com.arnava.photohub.viewmodel.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
+
+private const val ARG_PARAM1 = "param1"
 
 @AndroidEntryPoint
 class AuthFragment : Fragment() {
 
     private var _binding: FragmentAuthBinding? = null
     private val binding get() = _binding!!
-    private val authViewModel: AuthViewModel by viewModels()
+    private val authViewModel: AuthViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,11 +36,22 @@ class AuthFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAuthBinding.inflate(inflater, container, false)
-        val localToken = authViewModel.getTokenFromLocalStorage()
-        if (localToken != "" && NetworkState.isConnected()) {
-            TokenStorage.accessToken = localToken
-            authViewModel.saveUserNameToStorage()
-            findNavController().navigate(R.id.action_navigation_auth_to_navigation_home)
+        val photoUri = authViewModel.intentExternalData
+        if (photoUri != null) {
+            val bundle = Bundle().apply {
+                putString(ARG_PARAM1, photoUri.lastPathSegment)
+            }
+            findNavController().navigate(R.id.action_navigation_auth_to_photoDetailsFragment, bundle)
+            parentFragmentManager.commit {
+                replace(R.id.nav_host_fragment, PhotoDetailsFragment::class.java, bundle)
+            }
+        } else {
+            val localToken = authViewModel.getTokenFromLocalStorage()
+            if (localToken != "" && NetworkState.isConnected()) {
+                TokenStorage.accessToken = localToken
+                authViewModel.saveUserNameToStorage()
+                findNavController().navigate(R.id.action_navigation_auth_to_navigation_home)
+            }
         }
         return binding.root
     }

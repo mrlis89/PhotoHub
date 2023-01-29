@@ -19,5 +19,7 @@
     <string name="title_collections_search">Search result</string>
     <string name="title_db_photos">Cached photos</string>
     <string name="notif_open_photo">Open photo</string>
+    <string name="photo_base_url">https://unsplash.com/photos/</string>
+    <string name="share_photo">Share photo</string>
 
 </resources>
