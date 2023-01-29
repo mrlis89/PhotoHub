@@ -21,5 +21,6 @@
     <string name="notif_open_photo">Open photo</string>
     <string name="photo_base_url">https://unsplash.com/photos/</string>
     <string name="share_photo">Share photo</string>
+    <string name="login_via_unsplash">login via Unsplash</string>
 
 </resources>
