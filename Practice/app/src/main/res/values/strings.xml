@@ -27,4 +27,10 @@
     <string name="dialog_logout">Are you sure you want to exit? All local data will be deleted</string>
     <string name="yes">Yes</string>
     <string name="cancel">Cancel</string>
+
+    <string-array name="onboarding_phrases">
+        <item>Search for pictures, add to favorites</item>
+        <item>Share with friends, explore collections</item>
+        <item>upload pictures, track statistics</item>
+    </string-array>
 </resources>

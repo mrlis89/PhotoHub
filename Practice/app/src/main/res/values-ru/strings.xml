@@ -28,4 +28,10 @@
     <string name="dialog_logout">Вы уверены, что хотите выйти? Все локальные данные будут удалены</string>
     <string name="yes">Да</string>
     <string name="cancel">отмена</string>
+
+    <string-array name="onboarding_phrases">
+        <item>Ищите снимки, добавляйте в избранное</item>
+        <item>Делитесь с друзьями, изучайте коллекции</item>
+        <item>Загружайте снимки, отслеживайте статистику</item>
+    </string-array>
 </resources>
