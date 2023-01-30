@@ -6,11 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".ui.view.onboarding.OnboardingFragment">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="328dp"
+        android:layout_height="176dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="100dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/frameLayout" />
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="329dp"
+        android:layout_height="257dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/onboarding_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="600dp"
         android:layout_height="600dp"
-        android:layout_marginBottom="-150dp"
+        android:layout_marginBottom="-200dp"
         android:background="@drawable/gradient_onboarding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

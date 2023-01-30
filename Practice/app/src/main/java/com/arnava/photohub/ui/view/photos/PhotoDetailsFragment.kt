@@ -258,7 +258,7 @@ class PhotoDetailsFragment : Fragment() {
         val country = detailPhoto.location?.country
         if ((latitude != null) && (longitude != null) || city != null || country != null) {
             val gmmIntentUri =
-                Uri.parse(("geo=$latitude,$longitude") + Uri.encode("$city, $country"))
+                Uri.parse(("geo:$latitude,$longitude?q=") + Uri.encode("$city, $country"))
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
             startActivity(mapIntent)
         }
