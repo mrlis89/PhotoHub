@@ -45,21 +45,17 @@ class MainActivity : AppCompatActivity() {
 
         if (authViewModel.isFirstRun()) binding.onboardingLayout.isVisible = true
         val stringList = resources.getStringArray(R.array.onboarding_phrases)
-        with(binding) {
-            when (currentPage) {
-                0 -> onboardingText.text = stringList[0]
-                1 -> onboardingText.text = stringList[1]
-                2 -> onboardingText.text = stringList[2]
-            }
-        }
+        binding.onboardingText.text = stringList[0]
         binding.nextPageBtn.setOnClickListener {
             if (currentPage == 0) binding.prevPageBtn.isVisible = true
-            if (currentPage < 2) currentPage++
-            if (currentPage == 2) binding.onboardingLayout.isVisible = false
+            if (currentPage < 3) currentPage++
+            if (currentPage == 3) binding.onboardingLayout.isVisible = false
+            updateOnboardingText(stringList)
         }
         binding.prevPageBtn.setOnClickListener {
             if (currentPage > 0) currentPage--
             if (currentPage == 0) binding.prevPageBtn.isVisible = false
+            updateOnboardingText(stringList)
         }
 
         lifecycleScope.launchWhenStarted {
@@ -103,6 +99,16 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             true
+        }
+    }
+
+    private fun updateOnboardingText(stringList: Array<String>) {
+        with(binding) {
+            when (currentPage) {
+                0 -> onboardingText.text = stringList[0]
+                1 -> onboardingText.text = stringList[1]
+                2 -> onboardingText.text = stringList[2]
+            }
         }
     }
 
