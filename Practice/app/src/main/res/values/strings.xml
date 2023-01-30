@@ -29,8 +29,8 @@
     <string name="cancel">Cancel</string>
 
     <string-array name="onboarding_phrases">
-        <item>Search for pictures, add to favorites</item>
-        <item>Share with friends, explore collections</item>
+        <item>Search for pictures, add to favorites, explore the world</item>
+        <item>Share with friends, explore collections, learn from photography professionals</item>
         <item>upload pictures, track statistics</item>
     </string-array>
 </resources>

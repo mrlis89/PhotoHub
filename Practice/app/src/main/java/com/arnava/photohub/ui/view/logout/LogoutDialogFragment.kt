@@ -1,4 +1,4 @@
-package com.arnava.photohub.ui.view.dialog
+package com.arnava.photohub.ui.view.logout
 
 import android.app.Dialog
 import android.content.DialogInterface
@@ -26,11 +26,6 @@ class LogoutDialogFragment() : DialogFragment() {
                     clearLocalToken()
                     findNavController().navigate(R.id.action_navigation_profile_to_navigation_auth)
                 }
-                .setNegativeButton(R.string.cancel,
-                    DialogInterface.OnClickListener { dialog, id ->
-                        // User cancelled the dialog
-                    })
-            // Create the AlertDialog object and return it
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }

@@ -103,6 +103,8 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+    fun isFirstRun() = localRepository.isFirstRun()
+
     override fun onCleared() {
         super.onCleared()
         authService.dispose()
