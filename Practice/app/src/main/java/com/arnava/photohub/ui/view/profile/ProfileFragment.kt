@@ -9,6 +9,7 @@ import com.arnava.photohub.R
 import com.arnava.photohub.databinding.FragmentProfileBinding
 import com.arnava.photohub.ui.paging.ViewPagerAdapter
 import com.arnava.photohub.data.local.UserInfoStorage
+import com.arnava.photohub.ui.view.dialog.LogoutDialogFragment
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -47,6 +48,9 @@ class ProfileFragment : Fragment() {
             viewPager.adapter = viewPagerAdapter
             viewPagerAdapter.notifyDataSetChanged()
             viewPagerTab.setupWithViewPager(viewPager)
+            logoutBtn.setOnClickListener {
+                LogoutDialogFragment().show(parentFragmentManager,"dialog")
+            }
         }
 
     }

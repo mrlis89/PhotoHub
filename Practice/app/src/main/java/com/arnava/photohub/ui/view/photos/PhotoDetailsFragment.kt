@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.PendingIntent
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -133,6 +134,9 @@ class PhotoDetailsFragment : Fragment() {
                             detailedPhoto?.id.toString()
                         )
                     }
+                    locationText.setOnClickListener {
+                        detailedPhoto?.let { showLocation(it) }
+                    }
 
                 }
             }
@@ -244,6 +248,19 @@ class PhotoDetailsFragment : Fragment() {
         runBlocking {
             if (!item.likedByUser) photoDetailsViewModel.likePhoto(item.id)
             else photoDetailsViewModel.unlikePhoto(item.id)
+        }
+    }
+
+    private fun showLocation(detailPhoto: DetailedPhoto) {
+        val latitude = detailPhoto.location?.position?.latitude
+        val longitude = detailPhoto.location?.position?.longitude
+        val city = detailPhoto.location?.city
+        val country = detailPhoto.location?.country
+        if ((latitude != null) && (longitude != null) || city != null || country != null) {
+            val gmmIntentUri =
+                Uri.parse(("geo=$latitude,$longitude") + Uri.encode("$city, $country"))
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            startActivity(mapIntent)
         }
     }
 

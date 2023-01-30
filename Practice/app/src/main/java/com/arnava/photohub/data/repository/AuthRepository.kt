@@ -15,11 +15,6 @@ class AuthRepository @Inject constructor(private val localRepository: LocalRepos
         localRepository.saveTokenToSharedPref("")
     }
 
-    fun logout() {
-        TokenStorage.accessToken = null
-        TokenStorage.refreshToken = null
-    }
-
     fun getAuthRequest(): AuthorizationRequest {
         return AppAuth.getAuthRequest()
     }

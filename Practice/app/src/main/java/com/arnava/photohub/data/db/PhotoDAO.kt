@@ -11,4 +11,7 @@ interface PhotoDAO {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(photoDb: PhotoDb): Long
+
+    @Query("DELETE FROM photoTable")
+    suspend fun drop()
 }

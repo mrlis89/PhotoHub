@@ -41,6 +41,11 @@
             android:id="@+id/action_navigation_profile_to_photoDetailsFragment"
             app:destination="@id/photoDetailsFragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_navigation_profile_to_navigation_auth"
+            app:destination="@id/navigation_auth"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/navigation_auth"

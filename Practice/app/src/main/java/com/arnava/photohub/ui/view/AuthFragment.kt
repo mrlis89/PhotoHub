@@ -79,6 +79,7 @@ class AuthFragment : Fragment() {
         }
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             authViewModel.authSuccessFlow.collect {
+                authViewModel.saveUserNameToStorage()
                 findNavController().navigate(R.id.navigation_home)
             }
         }

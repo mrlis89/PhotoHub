@@ -24,4 +24,8 @@
     <string name="share_photo">Поделиться фото</string>
     <string name="login_via_unsplash">войти через Unsplash</string>
     <string name="downloads">Загрузок:</string>
+    <string name="logout">Выйти из профиля</string>
+    <string name="dialog_logout">Вы уверены, что хотите выйти? Все локальные данные будут удалены</string>
+    <string name="yes">Да</string>
+    <string name="cancel">отмена</string>
 </resources>

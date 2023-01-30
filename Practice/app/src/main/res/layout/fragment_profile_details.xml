@@ -24,6 +24,7 @@
         android:id="@+id/location_ic"
         android:layout_width="@dimen/icon_size"
         android:layout_height="@dimen/icon_size"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@+id/user_bio"
         app:layout_constraintTop_toBottomOf="@+id/user_bio"
         app:srcCompat="@drawable/ic_location"
@@ -40,7 +41,7 @@
         app:layout_constraintStart_toEndOf="@id/location_ic"
         app:layout_constraintTop_toTopOf="@id/location_ic"
         tools:ignore="ContentDescription"
-        tools:text="@tools:sample/full_names" />
+        tools:text="location" />
 
     <ImageView
         android:id="@+id/email_ic"
@@ -62,28 +63,28 @@
         app:layout_constraintStart_toEndOf="@id/location_ic"
         app:layout_constraintTop_toTopOf="@id/email_ic"
         tools:ignore="ContentDescription"
-        tools:text="@tools:sample/full_names" />
+        tools:text="mail@mail.com" />
 
-    <ImageView
-        android:id="@+id/download_ic"
-        android:layout_width="@dimen/icon_size"
-        android:layout_height="@dimen/icon_size"
-        app:layout_constraintStart_toStartOf="@+id/email_ic"
-        app:layout_constraintTop_toBottomOf="@+id/email_ic"
-        app:srcCompat="@drawable/ic_file_download"
-        tools:ignore="ContentDescription" />
+<!--    <ImageView-->
+<!--        android:id="@+id/download_ic"-->
+<!--        android:layout_width="@dimen/icon_size"-->
+<!--        android:layout_height="@dimen/icon_size"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/email_ic"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/email_ic"-->
+<!--        app:srcCompat="@drawable/ic_file_download"-->
+<!--        tools:ignore="ContentDescription" />-->
 
-    <TextView
-        android:id="@+id/user_downloads"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_main"
-        android:textAlignment="textEnd"
-        android:textSize="@dimen/normal_text_size"
-        app:layout_constraintBottom_toBottomOf="@id/download_ic"
-        app:layout_constraintStart_toEndOf="@id/location_ic"
-        app:layout_constraintTop_toTopOf="@id/download_ic"
-        tools:text="@tools:sample/full_names" />
+<!--    <TextView-->
+<!--        android:id="@+id/user_downloads"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="@dimen/margin_main"-->
+<!--        android:textAlignment="textEnd"-->
+<!--        android:textSize="@dimen/normal_text_size"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/download_ic"-->
+<!--        app:layout_constraintStart_toEndOf="@id/location_ic"-->
+<!--        app:layout_constraintTop_toTopOf="@id/download_ic"-->
+<!--        tools:text="downloads" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

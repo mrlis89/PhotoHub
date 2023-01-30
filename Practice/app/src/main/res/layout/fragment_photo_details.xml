@@ -276,6 +276,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_2x"
                 android:text="location"
+                android:textColor="?attr/colorPrimary"
                 android:textAlignment="textStart"
                 android:textSize="@dimen/normal_text_size"
                 app:layout_constraintBottom_toBottomOf="@+id/location_icon"

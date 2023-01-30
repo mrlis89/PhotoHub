@@ -34,7 +34,7 @@ class ProfileDetailsFragment : Fragment() {
         with(binding) {
             userBio.text = UserInfoStorage.userInfo?.bio
             userLocation.text = UserInfoStorage.userInfo?.location.toString()
-            userDownloads.text = UserInfoStorage.userInfo?.downloads.toString()
+            userEmail.text = UserInfoStorage.userInfo?.email
         }
     }
 }

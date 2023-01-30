@@ -23,5 +23,8 @@
     <string name="share_photo">Share photo</string>
     <string name="login_via_unsplash">login via Unsplash</string>
     <string name="downloads">Downloads:</string>
-
+    <string name="logout">logout</string>
+    <string name="dialog_logout">Are you sure you want to exit? All local data will be deleted</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
 </resources>
