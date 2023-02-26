@@ -17,87 +17,166 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/app_action_bar_size"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:titleTextColor="@color/white"
-            app:title="@string/title_profile_settings"/>
+            app:title="@string/title_profile_settings"
+            app:titleTextColor="@color/white" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/user_info"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/toolBarLayout"
+        app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintStart_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/toolBarLayout">
 
-        <ImageView
-            android:id="@+id/user_image_view"
-            android:layout_width="@dimen/user_avatar_image_size"
-            android:layout_height="@dimen/user_avatar_image_size"
-            android:layout_margin="@dimen/margin_main"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription"
-            tools:srcCompat="@tools:sample/avatars" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/user_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/user_full_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="@dimen/margin_main"
-            android:singleLine="false"
-            android:textAllCaps="true"
-            android:textSize="@dimen/header2_text_size"
-            app:layout_constraintStart_toEndOf="@id/user_image_view"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="@tools:sample/full_names" />
+            <ImageView
+                android:id="@+id/user_image_view"
+                android:layout_width="@dimen/user_avatar_image_size"
+                android:layout_height="@dimen/user_avatar_image_size"
+                android:layout_margin="@dimen/margin_main"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription"
+                tools:srcCompat="@tools:sample/avatars" />
 
-        <TextView
-            android:id="@+id/user_url"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="@dimen/margin_main"
-            android:singleLine="false"
-            android:textSize="@dimen/normal_text_size"
-            app:layout_constraintStart_toEndOf="@id/user_image_view"
-            app:layout_constraintTop_toBottomOf="@id/user_full_name"
-            tools:text="insta" />
+            <TextView
+                android:id="@+id/user_full_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:textAllCaps="true"
+                android:textSize="@dimen/header2_text_size"
+                app:layout_constraintStart_toEndOf="@id/user_image_view"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="full_names" />
 
-        <TextView
-            android:id="@+id/logout_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:text="@string/logout"
-            android:textColor="?attr/colorPrimary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/user_url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="@dimen/margin_main"
+                android:singleLine="false"
+                android:textSize="@dimen/normal_text_size"
+                app:layout_constraintStart_toEndOf="@id/user_image_view"
+                app:layout_constraintTop_toBottomOf="@id/user_full_name"
+                tools:text="insta" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/logout_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/logout"
+                android:textColor="?attr/colorPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/user_image_view" />
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/view_pager_tab"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_main"
-        app:layout_constraintTop_toBottomOf="@+id/user_info"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:tabMaxWidth="0dp"
-        app:tabGravity="fill"
-        app:tabMode="fixed" />
+            <TextView
+                android:id="@+id/user_bio"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:singleLine="false"
+                android:textSize="@dimen/normal_text_size"
+                app:layout_constraintStart_toStartOf="@+id/user_url"
+                app:layout_constraintTop_toBottomOf="@+id/user_url"
+                tools:text="@tools:sample/full_names" />
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/view_pager"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/view_pager_tab"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+            <ImageView
+                android:id="@+id/location_ic"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/user_bio"
+                app:layout_constraintTop_toBottomOf="@+id/user_bio"
+                app:srcCompat="@drawable/ic_location"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/user_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_main"
+                android:textAlignment="textEnd"
+                android:textSize="@dimen/normal_text_size"
+                app:layout_constraintBottom_toBottomOf="@id/location_ic"
+                app:layout_constraintStart_toEndOf="@id/location_ic"
+                app:layout_constraintTop_toTopOf="@id/location_ic"
+                tools:ignore="ContentDescription"
+                tools:text="location" />
+
+            <ImageView
+                android:id="@+id/email_ic"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                app:layout_constraintStart_toStartOf="@+id/location_ic"
+                app:layout_constraintTop_toBottomOf="@+id/location_ic"
+                app:srcCompat="@drawable/ic_email"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/user_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_main"
+                android:textAlignment="textEnd"
+                android:textSize="@dimen/normal_text_size"
+                app:layout_constraintBottom_toBottomOf="@id/email_ic"
+                app:layout_constraintStart_toEndOf="@id/location_ic"
+                app:layout_constraintTop_toTopOf="@id/email_ic"
+                tools:ignore="ContentDescription"
+                tools:text="mail@mail.com" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/user_email"
+                app:spanCount="2" />
+
+            <FrameLayout
+                android:id="@+id/progress_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#33000000"
+                android:visibility="gone">
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/refresh_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#86FFFFFF"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/refresh_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="160dp"
+                    android:layout_marginTop="320dp"
+                    android:text="Refresh"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </FrameLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

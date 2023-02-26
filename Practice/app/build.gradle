@@ -75,7 +75,6 @@ dependencies {
 
     implementation 'net.openid:appauth:0.11.1'
 
-    implementation 'com.github.bumptech.glide:glide:4.14.2'
 
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
 

@@ -13,7 +13,6 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.arnava.photohub.data.models.unsplash.photo.UnsplashPhoto
 import com.arnava.photohub.databinding.FragmentDbPhotosBinding
-import com.arnava.photohub.databinding.FragmentLikedPhotosBinding
 import com.arnava.photohub.ui.adapters.PhotoDbListAdapter
 import com.arnava.photohub.viewmodel.LikedPhotosViewModel
 import com.arnava.photohub.viewmodel.PhotoDbViewModel
